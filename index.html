@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Meta Tags -->
+  <title>FutAmadores - Encontre Times e Marque Jogos de Futebol</title>
+  <meta name="description" content="App para conectar times de futebol amador. Encontre adversários, marque jogos e gerencie sua agenda esportiva." />
+  <meta name="keywords" content="futebol amador, times, jogos, agendamento, society, futsal, campo" />
+  <meta name="author" content="FutAmadores Team" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://futamadores.vercel.app/" />
+  <meta property="og:title" content="FutAmadores - Encontre Times e Marque Jogos" />
+  <meta property="og:description" content="App para conectar times de futebol amador. Encontre adversários, marque jogos e gerencie sua agenda esportiva." />
+  <meta property="og:image" content="https://futamadores.vercel.app/og-image.jpg" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://futamadores.vercel.app/" />
+  <meta property="twitter:title" content="FutAmadores - Encontre Times e Marque Jogos" />
+  <meta property="twitter:description" content="App para conectar times de futebol amador. Encontre adversários, marque jogos e gerencie sua agenda esportiva." />
+  <meta property="twitter:image" content="https://futamadores.vercel.app/og-image.jpg" />
+  
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#16a34a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="FutAmadores" />
+  
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#16a34a" />
+  
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+  <!-- Performance optimizations -->
+  <link rel="dns-prefetch" href="https://api.qrserver.com" />
+  <link rel="dns-prefetch" href="https://formspree.io" />
+  
+  <!-- Critical CSS inlined -->
+  <style>
+    /* Loading screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      color: white;
+    }
+    
+    .loading-ball {
+      width: 60px;
+      height: 60px;
+      background: white;
+      border-radius: 50%;
+      animation: bounce 0.6s infinite alternate;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    
+    @keyframes bounce {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-20px); }
+    }
+    
+    .loading-text {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .loading-beta {
+      font-size: 12px;
+      opacity: 0.8;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 8px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-ball">⚽</div>
+    <div class="loading-text">FutAmadores</div>
+    <div class="loading-beta">BETA</div>
+  </div>
+  
+  <!-- App Root -->
+  <div id="root"></div>
+  
+  <!-- Remove loading screen when React loads -->
+  <script>
+    window.addEventListener('load', function() {
+      const loadingScreen = document.getElementById('loading-screen');
+      if (loadingScreen) {
+        setTimeout(() => {
+          loadingScreen.style.opacity = '0';
+          setTimeout(() => {
+            loadingScreen.remove();
+          }, 300);
+        }, 1000);
+      }
+    });
+  </script>
+  
+  <!-- Main App Script -->
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
